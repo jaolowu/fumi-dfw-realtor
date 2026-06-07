@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fumi DFW Realtor | Upgrade Your Living</title>
+  <meta name="description" content="Fumi is a DFW Realtor dedicated to helping buyers, sellers, and investors make confident real estate decisions in the Dallas-Fort Worth area." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #8B7A54;
+      --gold-lt: #A69567;
+      --dark:    #1A1A1A;
+      --mid:     #333333;
+      --light:   #F8F6F2;
+      --white:   #FFFFFF;
+      --border:  #E0D9CE;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-block;
+      padding: 10px 28px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1.5px solid var(--dark);
+      background: transparent;
+      color: var(--dark);
+      cursor: pointer;
+      transition: background .25s, color .25s;
+    }
+    .btn:hover { background: var(--dark); color: var(--white); }
+    .btn-gold {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .btn-gold:hover { background: var(--gold); color: var(--white); }
+    .btn-white {
+      border-color: var(--white);
+      color: var(--white);
+    }
+    .btn-white:hover { background: var(--white); color: var(--dark); }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text .name {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: 1px;
+    }
+
+    .logo-text .sub {
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    nav .nav-cta { font-size: 10px; letter-spacing: 2px; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 560px;
+      margin-top: 0;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('images/hero.jpg') center/cover no-repeat;
+      filter: brightness(0.65);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 72px;
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
+      max-width: 640px;
+      text-shadow: 0 2px 20px rgba(0,0,0,.35);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 96px 0;
+      background: var(--white);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 14px;
+    }
+
+    .about-text p strong {
+      color: var(--dark);
+    }
+
+    .about-photo {
+      height: 460px;
+      border-radius: 2px;
+      overflow: hidden;
+      background: url('images/fumi-photo.jpeg') center top/cover no-repeat;
+      background-color: #D4C9B8;
+    }
+
+    /* ── LISTINGS ── */
+    #listings {
+      padding: 80px 0;
+      background: var(--light);
+    }
+
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 48px;
+    }
+
+    .listing-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 4px;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .listing-card:nth-child(even) { direction: rtl; }
+    .listing-card:nth-child(even) > * { direction: ltr; }
+
+    .listing-img {
+      height: 320px;
+      overflow: hidden;
+    }
+
+    .listing-img-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .listing-info {
+      padding: 48px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .listing-info h3 {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--dark);
+    }
+
+    .listing-info p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 96px 0;
+      background: var(--white);
+      text-align: center;
+    }
+
+    #services .section-label { text-align: left; }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .services-header h2 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .service-card {
+      position: relative;
+      height: 280px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .service-card img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+      display: block;
+    }
+
+    .service-card:hover img { transform: scale(1.06); }
+
+    .service-grad {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.0) 50%);
+      pointer-events: none;
+    }
+
+    .service-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 18px 16px 20px;
+      color: var(--white);
+      text-align: left;
+    }
+
+    .service-content h3 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      white-space: nowrap;
+    }
+
+    .service-content p {
+      font-size: 12px;
+      line-height: 1.5;
+      opacity: 0.85;
+      margin: 0;
+    }
+
+    /* ── QUOTE ── */
+    #quote {
+      background: url('images/BottomImage.jpg') center/cover no-repeat;
+      position: relative;
+      padding: 100px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+    }
+
+    #quote blockquote {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 400;
+      color: var(--white);
+      text-align: center;
+      max-width: 820px;
+      line-height: 1.5;
+    }
+
+    #quote blockquote em {
+      color: var(--gold-lt);
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid #2E2E2E;
+      padding: 56px 0 40px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .footer-logo { margin-bottom: 28px; }
+
+    .footer-contact p {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-contact a {
+      color: #ccc;
+      transition: color .2s;
+    }
+
+    .footer-contact a:hover { color: var(--gold-lt); }
+
+    .footer-social {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+    }
+
+    .instagram-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #ccc;
+      transition: color .2s;
+      letter-spacing: 0.5px;
+    }
+
+    .instagram-link:hover { color: var(--gold-lt); }
+
+    .instagram-link svg { flex-shrink: 0; }
+
+    .footer-copy {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #2A2A2A;
+      font-size: 11px;
+      color: #555;
+      letter-spacing: 1px;
+    }
+
+    /* ── MODAL ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      width: 100%;
+      max-width: 520px;
+      padding: 48px 44px;
+      position: relative;
+      animation: fadeUp .3s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #999;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    .modal-close:hover { color: var(--dark); }
+
+    .modal h2 {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .modal .modal-sub {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 32px;
+    }
+
+    .modal-sub span {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      border: 1.5px solid var(--border);
+      background: var(--light);
+      color: var(--dark);
+      outline: none;
+      transition: border-color .2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--gold); }
+
+    .form-group textarea { min-height: 110px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      background: var(--dark);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background .25s;
+    }
+
+    .btn-submit:hover { background: var(--gold); }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 24px 0;
+    }
+
+    .form-success .check {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .form-success h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .form-success p { font-size: 14px; color: #777; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+
+      .hero-content { padding: 0 24px 56px; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-photo { height: 360px; order: -1; }
+
+      .listing-card {
+        grid-template-columns: 1fr;
+        direction: ltr !important;
+      }
+
+      .listing-img { height: 240px; }
+
+      .listing-info { padding: 32px 28px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .service-card { height: 220px; }
+
+      #quote { padding: 72px 28px; }
+
+      .footer-inner { grid-template-columns: 1fr; }
+
+      .footer-social { align-items: flex-start; }
+
+      .modal { padding: 36px 28px; }
+
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text .name { font-size: 13px; }
+      nav .nav-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <nav>
+    <a href="#hero" class="logo">
+      <!-- House Logo SVG -->
+      <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,4 36,18 36,38 24,38 24,28 16,28 16,38 4,38 4,18" fill="none" stroke="#8B7A54" stroke-width="2"/>
+        <polygon points="20,4 36,18 20,18" fill="#8B7A54" opacity="0.35"/>
+        <line x1="20" y1="4" x2="20" y2="0" stroke="#8B7A54" stroke-width="2"/>
+      </svg>
+      <div class="logo-text">
+        <span class="name">FUMI</span>
+        <span class="sub">DFW Realtor</span>
+      </div>
+    </a>
+    <button class="btn nav-cta" onclick="openModal('General Inquiry')">Inquire Now</button>
+  </nav>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section id="hero">
+    <div class="hero-img"></div>
+    <div class="hero-content">
+      <h1>Upgrade your<br>Living</h1>
+    </div>
+  </section>
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text">
+          <h2>About Fumi</h2>
+          <p>Hi, I'm Fumi, a DFW Realtor dedicated to helping buyers, sellers, and investors make confident real estate decisions.</p>
+          <p>I believe real estate is more than a transaction — it's an opportunity to <strong>upgrade your lifestyle, build wealth, and create a stronger future.</strong> Whether you're purchasing your first home, moving into your next chapter, downsizing, relocating, or investing, I am committed to guiding you through the process with professionalism, transparency, and care.</p>
+          <p>Serving the Dallas-Fort Worth area, my mission is simple: helping you upgrade the way you live and invest. <strong>Your next move starts here.</strong></p>
+          <br>
+          <button class="btn btn-gold" onclick="openModal('General Inquiry')">Work With Me</button>
+        </div>
+        <div class="about-photo"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ LISTINGS ══════════════ -->
+  <section id="listings">
+    <div class="container">
+      <p class="section-label">My Current Listings</p>
+
+      <!-- Listing 1 -->
+      <div class="listing-card">
+        <div class="listing-img">
+          <img
+            src="images/listing-1.jpg"
+            alt="Mixed-use property in Santa Solana"
+            onerror="this.style.background='#C8BEA8';this.removeAttribute('src')"
+          />
+        </div>
+        <div class="listing-info">
+          <h3>8,000 sq. ft. mixed-use property in Santa Solana</h3>
+          <p>Entice prospective buyers with a clearly written description that lists your property's most attractive feature.</p>
+          <div>
+            <button class="btn" onclick="openModal('8,000 sq. ft. mixed-use property in Santa Solana')">Inquire Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Listing 2 -->
+      <div class="listing-card">
+        <div class="listing-img">
+          <img
+            src="images/listing-2.jpg"
+            alt="Classic suburban home 3BR"
+            onerror="this.style.background='#B8AE9C';this.removeAttribute('src')"
+          />
+        </div>
+        <div class="listing-info">
+          <h3>Classic suburban home 3BR with parking and backyard patio</h3>
+          <p>Entice prospective buyers with a clearly written description that lists your property's most attractive feature.</p>
+          <div>
+            <button class="btn" onclick="openModal('Classic suburban home 3BR')">Inquire Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Listing 3 -->
+      <div class="listing-card">
+        <div class="listing-img">
+          <img
+            src="images/listing-3.jpg"
+            alt="2BR apartment in uptown Belden Park"
+            onerror="this.style.background='#9E9485';this.removeAttribute('src')"
+          />
+        </div>
+        <div class="listing-info">
+          <h3>2BR apartment in uptown Belden Park</h3>
+          <p>Entice prospective buyers with a clearly written description that lists your property's most attractive feature.</p>
+          <div>
+            <button class="btn" onclick="openModal('2BR apartment in uptown Belden Park')">Inquire Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════ SERVICES ══════════════ -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <h2>At Your Service</h2>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card" onclick="openModal('Buying a Home')">
+          <img src="images/service-buying.jpg" alt="" />
+          <div class="service-grad"></div>
+          <div class="service-content">
+            <h3>BUYING HOMES</h3>
+            <p>Are you house hunting? I can help you find a home.</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="openModal('Selling a Home')">
+          <img src="images/service-selling.jpg" alt="" />
+          <div class="service-grad"></div>
+          <div class="service-content">
+            <h3>SELLING HOMES</h3>
+            <p>Are you thinking of selling your home? Let me help you.</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="openModal('Rental Services')">
+          <img src="images/service-rental.jpg" alt="" />
+          <div class="service-grad"></div>
+          <div class="service-content">
+            <h3>RENTAL SERVICES</h3>
+            <p>Need to lease your home for rent? Let me help you.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ QUOTE ══════════════ -->
+  <section id="quote">
+    <div style="position:absolute;inset:0;background:rgba(10,10,10,0.72);"></div>
+    <blockquote style="position:relative;z-index:1;">
+      My approach is centered on <em>education, communication, and advocacy</em>, ensuring you have the information and support needed to make the best decisions for your goals.
+    </blockquote>
+
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div>
+          <div class="footer-logo">
+            <svg width="44" height="44" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="20,4 36,18 36,38 24,38 24,28 16,28 16,38 4,38 4,18" fill="none" stroke="#8B7A54" stroke-width="2"/>
+              <polygon points="20,4 36,18 20,18" fill="#8B7A54" opacity="0.35"/>
+            </svg>
+          </div>
+          <div class="footer-contact">
+            <p><a href="mailto:FUMI@FUMIDFWREALTOR.COM">FUMI@FUMIDFWREALTOR.COM</a></p>
+            <p><a href="tel:2148925800">214.892.5800</a></p>
+            <p style="margin-top:4px; font-size:11px; letter-spacing:1px; color:#555;">DALLAS – FORT WORTH, TX</p>
+          </div>
+        </div>
+
+        <div class="footer-social">
+          <!-- Instagram Link -->
+          <a href="https://www.instagram.com/YOUR_INSTAGRAM_HANDLE" target="_blank" rel="noopener" class="instagram-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+            </svg>
+            Follow on Instagram
+          </a>
+          <button class="btn btn-white" style="font-size:10px;" onclick="openModal('General Inquiry')">Inquire Now</button>
+        </div>
+
+      </div>
+
+      <div class="footer-copy">
+        &copy; <span id="year"></span> Fumi DFW Realtor &nbsp;|&nbsp; luxfrills.com &nbsp;|&nbsp; All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════ INQUIRY MODAL ══════════════ -->
+  <div class="modal-backdrop" id="inquiryModal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+
+      <!-- Form View -->
+      <div id="formView">
+        <h2 id="modalTitle">Get in Touch</h2>
+        <p class="modal-sub">Regarding: <span id="modalSubject">General Inquiry</span></p>
+
+        <form id="inquiryForm">
+          <!-- Web3Forms Access Key — replace with your key from web3forms.com -->
+          <input type="hidden" name="access_key" value="b11917df-4062-44e6-acc5-3ec67a7e646f" />
+          <input type="hidden" name="subject" id="formSubject" value="New Inquiry from luxfrills.com" />
+          <input type="hidden" name="from_name" value="Fumi DFW Realtor Website" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="first_name" required placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="last_name" required placeholder="Smith" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="jane@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(214) 000-0000" />
+          </div>
+
+          <div class="form-group">
+            <label for="interest">I'm interested in</label>
+            <select id="interest" name="interest">
+              <option value="Buying a Home">Buying a Home</option>
+              <option value="Selling a Home">Selling a Home</option>
+              <option value="Rental Services">Rental Services</option>
+              <option value="A Specific Listing">A Specific Listing</option>
+              <option value="General Inquiry">General Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required placeholder="Tell me about what you're looking for..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Success View -->
+      <div class="form-success" id="successView">
+        <div class="check">✓</div>
+        <h3>Message Sent!</h3>
+        <p>Thank you for reaching out. Fumi will be in touch with you shortly.</p>
+        <br>
+        <button class="btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SCRIPTS ══════════════ -->
+  <script>
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Modal open / close
+    function openModal(subject) {
+      document.getElementById('modalSubject').textContent = subject;
+      document.getElementById('formSubject').value = 'New Inquiry – ' + subject + ' | luxfrills.com';
+      document.getElementById('inquiryModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('inquiryModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOnBackdrop(e) {
+      if (e.target === document.getElementById('inquiryModal')) closeModal();
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Web3Forms submission
+    document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const btn = this.querySelector('.btn-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const formData = new FormData(this);
+      const object   = Object.fromEntries(formData);
+      const json     = JSON.stringify(object);
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body:    json
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          document.getElementById('formView').style.display    = 'none';
+          document.getElementById('successView').style.display = 'block';
+          this.reset();
+        } else {
+          alert('Something went wrong. Please email FUMI@FUMIDFWREALTOR.COM directly.');
+        }
+      } catch (err) {
+        alert('Network error. Please email FUMI@FUMIDFWREALTOR.COM directly.');
+      } finally {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      }
+    });
+
+    // Reset modal when closed
+    document.getElementById('inquiryModal').addEventListener('transitionend', function() {
+      if (!this.classList.contains('open')) {
+        document.getElementById('formView').style.display    = '';
+        document.getElementById('successView').style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
